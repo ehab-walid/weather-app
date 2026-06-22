@@ -16,6 +16,7 @@ export default {
   ],
   module: {
     rules: [
+      
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
@@ -27,6 +28,10 @@ export default {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.svg$/i,
+        type: "asset/source", // imports the raw SVG markup as a string
       },
     ],
   },

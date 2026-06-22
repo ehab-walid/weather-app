@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* snow	Amount of snow is greater than zero
+rain	Amount of rainfall is greater than zero
+fog	Visibility is low (lower than one kilometer or mile)
+wind	Wind speed is high (greater than 30 kph or mph)
+cloudy	Cloud cover is greater than 90% cover
+partly-cloudy-day	Cloud cover is greater than 20% cover during day time.
+partly-cloudy-night	Cloud cover is greater than 20% cover during night time.
+clear-day	Cloud cover is less than 20% cover during day time
+clear-night */
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(237, 236, 236);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.app-title {
+  font-size: 1.5rem;
+  justify-self: center;
+}
+
+.app-title h1 {
+  font-weight: 600;
+}
+
+.container,
+.display-container {
+  width: min(95%, 1000px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.display-container {
+  margin-top: 20px;
+}
+
+.container input {
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 0px solid grey;
+  padding: 15px 15px;
+}
+
+.container form {
+  display: flex;
+  gap: 10px;
+}
+
+#search-location-form button {
+  font-size: 1rem;
+  border: 0px solid grey;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 1px 2px 7px lightgray;
+}
+
+.current-weather-section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  gap: 40px;
+}
+
+.current-left {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 5px;
+}
+
+.current-left .curr-loc {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.current-left .curr-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(86, 84, 84);
+}
+
+.temp-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  /* justify-self: center; */
+}
+.temp-section .temp-icon {
+  font-size: 3.5rem;
+  display: grid;
+  width: 90%;
+  align-self: center;
+  justify-self: center;
+  /* width: 100%; */
+  /* height: 100px; */
+  /* background-image: url("images/icon.svg"); */ 
+  /* background-size: contain;
+  background-repeat: no-repeat; */
+}
+.temp-section .temp {
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+.temp-section .temp-desc-section {
+  display: grid;
+  align-items: center;
+}
+
+.weather-desc {
+  font-size: 0.8rem;
+  color: rgb(68, 67, 67);
+}
+
+.current-right {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0px;
+}
+
+.curr-stats-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  height: 50%;
+}
+
+.curr-stats-bottom {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.curr-stats-bottom .curr-stats {
+  justify-items: center;
+  text-align: center;
+}
+
+.current-right .stat-name {
+  font-size: 0.7rem;
+}
+
+.curr-stats {
+  background-color: rgb(237, 236, 236);
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.curr-stats-top .stat-value {
+  font-size: 1.6rem;
+  /* max-width: 50%; */
+}
+
+.forecast-header {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(86, 84, 84);
+}
+
+.forecast-card {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forecast-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.forecast-day,
+.forecast-date,
+.forecast-sky {
+  font-size: 0.7rem;
+}
+
+.forecast-day {
+  font-weight: 600;
+}
+
+.forecast-icon {
+  font-size: 2rem;
+  margin: 20px 0px;
+}
+
+.forecast-sky {
+  margin-bottom: 20px;
+}
+
+.forecast-high-low {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.forecast-low {
+  color: rgb(151, 150, 150);
+}

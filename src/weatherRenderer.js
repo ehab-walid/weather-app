@@ -1,6 +1,7 @@
 import { createDiv, createStat } from "./domHelpers.js";
 import { displayTemp } from "./unitConverter.js";
 import { weatherIcons } from "./icons.js";
+import { format, fromUnixTime } from "date-fns";
 
 export function renderCurrentWeather(data, container) {
   // Clear any existing content
@@ -14,7 +15,7 @@ export function renderCurrentWeather(data, container) {
 
   const locTime = createDiv("current-loc-time", [
     createDiv("curr-loc", data.address),
-    createDiv("curr-date", data.days[0].datetime),
+    createDiv("curr-date", format(data.days[0].datetime, "PPP")),
   ]);
 
   const tempIcon = createDiv(
@@ -23,7 +24,6 @@ export function renderCurrentWeather(data, container) {
   );
   tempIcon.innerHTML =
     weatherIcons[data.currentConditions.icon] || weatherIcons["cloudy"];
-  console.log(weatherIcons[data.currentConditions.icon]);
 
   const tempSection = createDiv("temp-section", [
     tempIcon,
@@ -60,8 +60,16 @@ export function renderCurrentWeather(data, container) {
     createStat("humidity", "Humidity", data.currentConditions.humidity),
     createStat("wind", "Wind", data.currentConditions.windspeed),
     createStat("uv", "UV", data.currentConditions.uvindex),
-    createStat("sunrise", "Sunrise", data.currentConditions.sunrise),
-    createStat("sunset", "Sunset", data.currentConditions.sunset),
+    createStat(
+      "sunrise",
+      "Sunrise",
+      format(fromUnixTime(data.currentConditions.sunriseEpoch), "p"),
+    ),
+    createStat(
+      "sunset",
+      "Sunset",
+      format(fromUnixTime(data.currentConditions.sunsetEpoch), "p"),
+    ),
   ]);
 
   currentRight.append(statsTop, statsBottom);
@@ -73,12 +81,14 @@ export function renderCurrentWeather(data, container) {
 }
 
 export function renderForecastWeather(data, container) {
-  const forecastHeader = createDiv(
-    "forecast-header",
-    "forecast for the next 7 days",
-  );
+  const forecastIcon = createDiv("forecast-header-icon", "");
+  forecastIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>newspaper</title><path d="M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67L18.67,3L17,4.67L15.33,3L13.67,4.67L12,3L10.33,4.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V3L20.33,4.67Z" /></svg>`;
+  const forecastHeader = createDiv("forecast-header", [
+    forecastIcon,
+    createDiv("forecast-header-text", "forecast for the next 7 days"),
+  ]);
   const forecastSection = createDiv("forecast-section", "");
-  for (let i = 0; i < 7; i++) {
+  for (let i = 1; i < 8; i++) {
     forecastSection.appendChild(createForecastCard(data.days[i]));
   }
   container.append(forecastHeader, forecastSection);
@@ -88,7 +98,7 @@ function createForecastCard(data) {
   const forecastIcon = createDiv("forecast-icon", "");
   forecastIcon.innerHTML = weatherIcons[data.icon];
   const forecastCard = createDiv("forecast-card", [
-    createDiv("forecast-day", "day"),
+    createDiv("forecast-day", format(data.datetime, "ccc")),
     createDiv("forecast-date", data.datetime),
     forecastIcon,
     createDiv("forecast-sky", data.conditions),

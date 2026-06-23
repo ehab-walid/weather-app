@@ -1,7 +1,11 @@
 import "./style.css";
 import { toggleUnit } from "./unitConverter.js";
 import { fetchWeather } from "./weatherApi.js";
-import { renderCurrentWeather, renderForecastWeather } from "./weatherRenderer.js";
+import {
+  renderCurrentWeather,
+  renderForecastWeather,
+} from "./weatherRenderer.js";
+import { displayNotFound } from "./errorMessage.js";
 
 let weather_data = null;
 
@@ -24,7 +28,11 @@ function renderAll() {
 
 async function fetchAndDisplayWeather(keyword) {
   weather_data = await fetchWeather(keyword);
-  renderAll();
+  if (!weather_data) {
+    displayNotFound();
+  } else {
+    renderAll();
+  }
 }
 
 function initToggleUnit() {

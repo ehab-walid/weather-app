@@ -7,16 +7,19 @@ import {
 } from "./weatherRenderer.js";
 import { displayNotFound } from "./errorMessage.js";
 import { displayLoading } from "./loadingAnimation.js";
+import { fetchPhoto } from "./pexelApi.js";
+import { displayBackground } from "./backgroundRenderer.js";
 
 let weather_data = null;
 
-function initSearchForm() {
+async function initSearchForm() {
   const form = document.getElementById("search-location-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const keyword = formData.get("location");
     fetchAndDisplayWeather(keyword);
+    // fetchAndDisplayBackground(keyword);
   });
 }
 
@@ -25,6 +28,13 @@ function renderAll() {
   const container = document.querySelector(".display-container");
   renderCurrentWeather(weather_data, container);
   renderForecastWeather(weather_data, container);
+  fetchAndDisplayBackground(weather_data.resolvedAddress);
+}
+
+async function fetchAndDisplayBackground(keyword) {
+  const img_url = await fetchPhoto(keyword);
+  if(!img_url) return;
+  displayBackground(img_url);
 }
 
 async function fetchAndDisplayWeather(keyword) {

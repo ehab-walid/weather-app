@@ -10,6 +10,7 @@ export async function fetchWeather(location) {
     }
     
     const data = await response.json();
+    // console.log(data);
     return getStats(data);
   } catch (error) {
     console.error("Fetch pipeline operation failed:", error.message);
@@ -17,6 +18,6 @@ export async function fetchWeather(location) {
 }
 
 function getStats(data) {
-  let { address, description, currentConditions, days } = data;
-  return { address, description, currentConditions, days };
+  let { address, description, currentConditions, days, resolvedAddress } = data;
+  return { address, description, currentConditions, days, resolvedAddress };
 }

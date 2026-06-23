@@ -110,11 +110,6 @@ button:active {
   width: 90%;
   align-self: center;
   justify-self: center;
-  /* width: 100%; */
-  /* height: 100px; */
-  /* background-image: url("images/icon.svg"); */ 
-  /* background-size: contain;
-  background-repeat: no-repeat; */
 }
 .temp-section .temp {
   font-size: 3.5rem;
@@ -183,10 +178,14 @@ button:active {
   background-color: white;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+  padding: 14px 8px;
+  display: grid;
+  justify-items: center;
   align-items: center;
+  text-align: center;
+  /* grid-template-rows: auto auto 70px auto auto; */
+  /* flex-direction: column; */
+  /* align-items: center; */
 }
 
 .forecast-section {
@@ -198,7 +197,7 @@ button:active {
 .forecast-day,
 .forecast-date,
 .forecast-sky {
-  font-size: 0.7rem;
+  font-size: 11px;
 }
 
 .forecast-day {
@@ -207,7 +206,16 @@ button:active {
 
 .forecast-icon {
   font-size: 2rem;
-  margin: 20px 0px;
+  margin: 40px 0px;
+  display: grid;
+  width: 70px;
+  height: 70px;
+  /* justify-content: center; */
+}
+
+.forecast-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
 .forecast-sky {

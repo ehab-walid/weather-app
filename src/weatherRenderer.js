@@ -15,7 +15,7 @@ export function renderCurrentWeather(data, container) {
 
   const locTime = createDiv("current-loc-time", [
     createDiv("curr-loc", data.address),
-    createDiv("curr-date", format(data.days[0].datetime, "PPP")),
+    createDiv("curr-date", format(data.days[0].datetime, "PPP") || ""),
   ]);
 
   const tempIcon = createDiv(
@@ -63,12 +63,12 @@ export function renderCurrentWeather(data, container) {
     createStat(
       "sunrise",
       "Sunrise",
-      format(fromUnixTime(data.currentConditions.sunriseEpoch), "p"),
+      formatTime(data.currentConditions.sunriseEpoch),
     ),
     createStat(
       "sunset",
       "Sunset",
-      format(fromUnixTime(data.currentConditions.sunsetEpoch), "p"),
+      formatTime(data.currentConditions.sunsetEpoch),
     ),
   ]);
 
@@ -78,6 +78,15 @@ export function renderCurrentWeather(data, container) {
 
   // --- Assemble and inject ---
   container.append(curr_weather_section);
+}
+
+function formatTime(epoch) {
+  if (epoch == null) return "—";
+  try {
+    return format(fromUnixTime(epoch), "p");
+  } catch {
+    return "—";
+  }
 }
 
 export function renderForecastWeather(data, container) {

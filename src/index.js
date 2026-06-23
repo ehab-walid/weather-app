@@ -6,6 +6,7 @@ import {
   renderForecastWeather,
 } from "./weatherRenderer.js";
 import { displayNotFound } from "./errorMessage.js";
+import { displayLoading } from "./loadingAnimation.js";
 
 let weather_data = null;
 
@@ -27,6 +28,7 @@ function renderAll() {
 }
 
 async function fetchAndDisplayWeather(keyword) {
+  displayLoading();
   weather_data = await fetchWeather(keyword);
   if (!weather_data) {
     displayNotFound();

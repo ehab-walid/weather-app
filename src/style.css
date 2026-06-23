@@ -12,6 +12,7 @@ body {
 
 button {
   cursor: pointer;
+  /* font-family: "Chelsea Market"; */
 }
 
 button:active {
@@ -67,6 +68,12 @@ button:active {
 #toggle-unit-btn {
   padding: 15px 15px;
   width: 80px;
+  color: rgb(119, 116, 116)
+}
+
+#toggle-unit-btn span.active {
+  font-weight: 900;
+  color:black;
 }
 
 .error-message {

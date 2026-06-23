@@ -1,9 +1,19 @@
 let isCelcius = false;
+const celcius = document.querySelector(".celcius");
+const farenheit = document.querySelector(".farenheit");
 
 export const getIsCelcius = () => isCelcius;
 
 export const toggleUnit = () => {
     isCelcius = !isCelcius;
+    
+    if(isCelcius) {
+        celcius.className = "celcius active";
+        farenheit.className = "farenheit";
+    } else {
+        celcius.className = "celcius";
+        farenheit.className = "farenheit active";
+    }
     return isCelcius;
 }
 

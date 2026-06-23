@@ -18,7 +18,7 @@ export function createDiv(className, content) {
 
 // Helper: creates a .curr-stats block (stat-name + stat-value)
 export function createStat(extraClass, name, value) {
-  return createDiv(`curr-stats ${extraClass}`, [
+  return createDiv(`curr-stats glass-panel ${extraClass}`, [
     createDiv("stat-name", name),
     createDiv("stat-value", value),
   ]);

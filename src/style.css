@@ -19,6 +19,22 @@ button {
   /* font-family: "Chelsea Market"; */
 }
 
+.glass-panel {
+  /* Semi-transparent background color */
+  background: rgba(255, 255, 255, 0.2); 
+  
+  /* The magic blur effect on the elements behind it */
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  
+  /* Edge highlights mimicking light refraction */
+  border: 1px solid rgba(255, 255, 255, 0.25); 
+  border-radius: 16px; 
+  
+  /* Subtle drop shadow for depth */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15); 
+}
+
 button:active {
   transform: translateY(2px) scale(0.98);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
@@ -31,6 +47,10 @@ button:active {
 
 .app-title h1 {
   font-weight: 600;
+  color: #ffffff; 
+  /* text-shadow:0px 5px 5px black; */
+  text-shadow:2px 2px 2px black;
+
 }
 
 .container,
@@ -47,12 +67,20 @@ button:active {
 }
 
 .container input {
+  font-family: "Chelsea Market";
   width: 100%;
   font-size: 1rem;
   border-radius: 10px;
   border: 0px solid grey;
   padding: 15px 15px;
 }
+
+.container input:focus {
+  outline: none;
+  /* background-color: transparent; */
+}
+
+
 
 .container form {
   width: 100%;
@@ -61,12 +89,13 @@ button:active {
 }
 
 #search-location-form button, #toggle-unit-btn {
+  font-family: "Chelsea Market";
   font-size: 1rem;
   border: 0px solid grey;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 10px;
   padding: 15px 20px;
-  box-shadow: 1px 2px 7px lightgray;
+  /* box-shadow: 1px 2px 7px lightgray; */
 }
 
 #toggle-unit-btn {
@@ -105,7 +134,7 @@ button:active {
 }
 
 .current-weather-section {
-  background-color: white;
+  /* background-color: white; */
   border-radius: 10px;
   padding: 30px;
   display: grid;
@@ -130,7 +159,7 @@ button:active {
 .current-left .curr-date {
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgb(86, 84, 84);
+  /* color: rgb(86, 84, 84); */
 }
 
 .temp-section {
@@ -145,6 +174,7 @@ button:active {
   width: 90%;
   align-self: center;
   justify-self: center;
+  
 }
 .temp-section .temp {
   font-size: 3.5rem;
@@ -158,7 +188,7 @@ button:active {
 
 .weather-desc {
   font-size: 0.8rem;
-  color: rgb(68, 67, 67);
+  /* color: rgb(68, 67, 67); */
 }
 
 .current-right {
@@ -192,7 +222,7 @@ button:active {
 }
 
 .curr-stats {
-  background-color: rgb(237, 236, 236);
+  /* background-color: rgb(237, 236, 236); */
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 10px;
@@ -206,10 +236,12 @@ button:active {
 .forecast-header {
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgb(86, 84, 84);
+  /* color: rgb(86, 84, 84); */
   display: flex;
   gap: 10px;
   align-items: center;
+  color: #ffffff; 
+  text-shadow: 2px 2px 2px black;
 }
 
 .forecast-header-icon {
@@ -217,8 +249,13 @@ button:active {
   display: grid;
 }
 
+.forecast-header-icon svg {
+  fill: #ffffff;
+  filter: drop-shadow( 2px 2px 2px black);
+} 
+
 .forecast-card {
-  background-color: white;
+  /* background-color: white; */
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 14px 8px;
@@ -273,5 +310,6 @@ button:active {
 }
 
 .forecast-low {
-  color: rgb(151, 150, 150);
+  /* color: rgb(151, 150, 150); */
+  color: white;
 }

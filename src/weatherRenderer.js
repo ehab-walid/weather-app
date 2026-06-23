@@ -7,7 +7,7 @@ export function renderCurrentWeather(data, container) {
   // Clear any existing content
   container.innerHTML = "";
   const curr_weather_section = document.createElement("div");
-  curr_weather_section.classList.add("current-weather-section");
+  curr_weather_section.className = "current-weather-section glass-panel";
 
   // --- Build .current-left ---
   const currentLeft = document.createElement("div");
@@ -106,7 +106,7 @@ export function renderForecastWeather(data, container) {
 function createForecastCard(data) {
   const forecastIcon = createDiv("forecast-icon", "");
   forecastIcon.innerHTML = weatherIcons[data.icon];
-  const forecastCard = createDiv("forecast-card", [
+  const forecastCard = createDiv("forecast-card glass-panel", [
     createDiv("forecast-day", format(data.datetime, "ccc")),
     createDiv("forecast-date", data.datetime),
     forecastIcon,
